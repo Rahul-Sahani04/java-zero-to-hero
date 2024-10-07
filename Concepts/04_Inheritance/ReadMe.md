@@ -12,6 +12,7 @@ Inheritance allows you to define a new class based on an existing class. In this
 - `BoxWeight.java` - Inherit class `Box` and add the `weight` variable.
 - `SuperDemo.java` - Use the `super` keyword to call the parent class constructor.
 - `AbstractFigure.java` - Demonstrate the use of abstract classes and methods.
+- `DynamicDispatch.java` - Demonstrate dynamic method dispatch (runtime polymorphism).
 
 ## Exercises:
 1. Create a class `BoxWeight` that inherits from `Box` and adds a `weight` attribute.
@@ -24,7 +25,7 @@ Continue to **Packages & Interfaces** after completing these.
 
 ## Files
 
-- **AbstractFigure.java**: Demonstrates the use of abstract classes.
-- **BoxWeight.java**: Extends the Box class to include weight.
-- **DynamicDispatch.java**: Demonstrates dynamic method dispatch.
-- **SuperDemo.java**: Demonstrates the use of the `super` keyword.
+- **AbstractFigure.java**: Demonstrates the use of abstract classes and methods.
+- **BoxWeight.java**: Inherit class `Box` and add the `weight` variable.
+- **DynamicDispatch.java**: Demonstrates dynamic method dispatch (runtime polymorphism).
+- **SuperDemo.java**: Demonstrates the use of the `super` keyword to call the parent class constructor.

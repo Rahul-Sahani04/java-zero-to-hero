@@ -1,0 +1,4 @@
+# Java gitignore
+*.class
+
+/Levels
