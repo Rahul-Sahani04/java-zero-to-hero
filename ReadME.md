@@ -39,6 +39,13 @@ By following this structured learning path, you'll gain a deep understanding of 
 
 ---
 
+### Roadmap
+Below is the roadmap image to guide you through the learning path:
+
+![Java Learning Roadmap](Assets/roadmap.sh_java.png)
+
+---
+
 ### Additional Resources
 For a more detailed roadmap on learning Java, you can visit the [Java Roadmap](https://roadmap.sh/java).
 
