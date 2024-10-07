@@ -17,19 +17,19 @@ By following this structured learning path, you'll gain a deep understanding of 
 ## Table of Contents
 
 ### Beginner
-1. [Java Basics](Concepts/01_Basics/README.md)
-2. [Arrays & Strings](Concepts/02_Arrays_Strings/README.md)
+1. [Java Basics](Concepts/01_Basics)
+2. [Arrays & Strings](Concepts/02_Arrays_Strings)
 
 ### Intermediate
-3. [Classes & Objects](Concepts/03_Classes_Objects/README.md)
-4. [Inheritance & Polymorphism](Concepts/04_Inheritance/README.md)
-5. [Exception Handling](Concepts/05_Exception_Handling/README.md)
+3. [Classes & Objects](Concepts/03_Classes_Objects)
+4. [Inheritance & Polymorphism](Concepts/04_Inheritance)
+5. [Exception Handling](Concepts/05_Exception_Handling)
 
 ### Advanced
-6. [Multithreading](Concepts/06_Multithreading/README.md)
-7. [Networking](Concepts/07_Networking/README.md)
-8. [JDBC](Concepts/08_JDBC/README.md)
-9. [AWT & Swing](Concepts/09_AWT_Swing/README.md)
+6. [Multithreading](Concepts/06_Multithreading)
+7. [Networking](Concepts/07_Networking)
+8. [JDBC](Concepts/08_JDBC)
+9. [AWT & Swing](Concepts/09_AWT_Swing)
 
 ---
 
@@ -52,4 +52,4 @@ For a more detailed roadmap on learning Java, you can visit the [Java Roadmap](h
 
 ---
 
-Start with the [Java Basics](Concepts/01_Basics/README.md) to begin your journey!
+Start with the [Java Basics](Concepts/01_Basics) to begin your journey!
