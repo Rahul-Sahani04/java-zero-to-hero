@@ -40,6 +40,13 @@ By following this structured learning path, you'll gain a deep understanding of 
 
 ---
 
+
+### Cheatsheets
+- [Princeton University Java Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)
+- [Code with Harry Java Cheatsheet](https://www.codewithharry.com/blogpost/java-cheatsheet/)
+
+---
+
 ### Roadmap
 Below is the roadmap image to guide you through the learning path:
 
