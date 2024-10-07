@@ -11,6 +11,7 @@ By following this structured learning path, you'll gain a deep understanding of 
 4. **Try the Exercises**: Attempt the exercises provided in each folder before checking the solutions.
 5. **Build your Own Projects**: Once you feel confident, try creating your own projects.
 
+
 ---
 
 ## Table of Contents
