@@ -19,11 +19,11 @@ public class SwingCalculator extends JFrame implements ActionListener {
         // Set the title of the window
         setTitle("Calculator");
         // Set the size of the window
-        setSize(300, 200);
+        setSize(600, 200);
         // Specify the close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Set the layout manager to GridLayout with 4 rows and 2 columns
-        setLayout(new GridLayout(4, 2));
+        // Set the layout manager to GridLayout with 5 rows and 5 columns
+        setLayout(new GridLayout(5, 5));
 
         // Initialize text fields
         num1 = new JTextField();
