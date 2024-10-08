@@ -59,4 +59,9 @@ For a more detailed roadmap on learning Java, you can visit the [Java Roadmap](h
 
 ---
 
+### Repository Status
+This repository is still in creation and is actively being updated and maintained. New content and improvements are added regularly. Stay tuned for more updates!
+
+---
+
 Start with the [Java Basics](Concepts/01_Basics) to begin your journey!
