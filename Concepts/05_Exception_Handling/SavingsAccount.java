@@ -1,4 +1,7 @@
 // Class representing a savings account with basic operations and exception handling.
+
+// This file may show some errors but it is intentional to demonstrate exception handling.
+
 public class SavingsAccount {
     private double balance;
 

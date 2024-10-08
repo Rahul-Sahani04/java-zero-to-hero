@@ -1,0 +1,1300 @@
+---
+File: ./ReadME.md
+---
+Welcome to the **Java Zero to Hero Guide**, a comprehensive resource designed for beginners to learn Java from scratch. Each folder in this repository contains examples and exercises that build upon the previous concepts.
+
+By following this structured learning path, you'll gain a deep understanding of Java, from basics to advanced topics like multithreading, networking, and GUI development.
+
+---
+
+## How to Use This Repository
+1. **Clone this Repository**: Use `git clone` or download the zip file.
+2. **Follow the Learning Path**: Start with the first folder and gradually work your way through each folder.
+3. **Run the Examples**: Each folder contains example code with explanations in the `README` file.
+4. **Try the Exercises**: Attempt the exercises provided in each folder before checking the solutions.
+5. **Build your Own Projects**: Once you feel confident, try creating your own projects.
+
+
+---
+
+## Table of Contents
+
+### Beginner
+1. [Java Basics](Concepts/01_Basics)
+2. [Arrays & Strings](Concepts/02_Arrays_Strings)
+
+### Intermediate
+3. [Classes & Objects](Concepts/03_Classes_Objects)
+4. [Inheritance & Polymorphism](Concepts/04_Inheritance)
+5. [Exception Handling](Concepts/05_Exception_Handling)
+
+### Advanced
+6. [Multithreading](Concepts/06_Multithreading)
+7. [Networking](Concepts/07_Networking)
+8. [JDBC](Concepts/08_JDBC)
+9. [AWT & Swing](Concepts/09_AWT_Swing)
+
+---
+
+### Requirements
+- JDK installed: [Install JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- IDE: You can use any Java IDE, but I recommend [VS Code](https://code.visualstudio.com/) or [IntelliJ IDEA](https://www.jetbrains.com/idea/).
+- Basic knowledge of programming (optional but helpful).
+
+---
+
+
+### Cheatsheets
+- [Princeton University Java Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)
+- [Code with Harry Java Cheatsheet](https://www.codewithharry.com/blogpost/java-cheatsheet/)
+
+---
+
+### Roadmap
+Below is the roadmap image to guide you through the learning path:
+
+[![Java Learning Roadmap](Assets/roadmap.sh_java.png)](https://roadmap.sh/java)
+
+---
+
+### Additional Resources
+For a more detailed roadmap on learning Java, you can visit the [Java Roadmap](https://roadmap.sh/java).
+
+---
+
+Start with the [Java Basics](Concepts/01_Basics) to begin your journey!
+
+---
+File: ./Concepts/05_Exception_Handling/README.md
+---
+# Packages & Interfaces
+
+This section teaches you how to organize code using packages and how to work with interfaces to achieve abstraction.
+
+## Topics Covered:
+1. **Packages** - Grouping related classes together.
+2. **Access Protection** - How access modifiers affect package visibility.
+3. **Interfaces** - Defining contracts without implementation.
+
+## Example Programs:
+- `PackageDemo.java` - Show how to create and use a package.
+- `StackInterface.java` - Implement stack using an interface.
+
+## Exercises:
+1. Write a program showing the usage of a package.
+2. Write a program to implement a stack using an interface.
+
+Now, move on to **Exception Handling**.
+
+---
+
+## Files
+
+- **TryCatchDemo.java**: Demonstrates try, catch, throw, throws, and finally.
+- **UserDefinedException.java**: Demonstrates user-defined exceptions.
+- **VoterAgeCheck.java**: Throws exception if age is less than 18.
+- **StackException.java**: Throws exception if stack is full or empty.
+- **BankBalanceException.java**: Throws exception if bank balance drops below 1000.
+- **SavingsAccount.java**: Demonstrates exception handling in banking operations.
+
+
+---
+File: ./Concepts/05_Exception_Handling/SavingsAccount.java
+---
+// Class representing a savings account with basic operations and exception handling.
+
+// This file may show some errors but it is intentional to demonstrate exception handling.
+
+public class SavingsAccount {
+    private double balance;
+
+    public SavingsAccount(double initialBalance) {
+        if (initialBalance < 0) {
+            throw new IllegalArgumentException("Initial balance cannot be negative.");
+        }
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Deposit amount must be positive.");
+        }
+        balance += amount;
+    }
+
+    public void withdraw(double amount) throws BankBalanceException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Withdrawal amount must be positive.");
+        }
+        if (balance - amount < 1000) {
+            throw new BankBalanceException("Balance cannot drop below 1000 after withdrawal.");
+        }
+        balance -= amount;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public static void main(String[] args) {
+        try {
+            SavingsAccount account = new SavingsAccount(1500);
+            account.deposit(500);
+            account.withdraw(2000); // This will throw BankBalanceException
+        } catch (BankBalanceException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+}
+
+---
+File: ./Concepts/05_Exception_Handling/VoterAgeCheck.java
+---
+
+// Program to check voter eligibility based on age.
+import java.util.Scanner;
+
+public class VoterAgeCheck {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your age: ");
+        int age = input.nextInt();
+
+        try {
+            checkAge(age);
+            System.out.println("You are eligible to vote.");
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+    }
+
+    public static void checkAge(int age) throws Exception {
+        if (age < 18) {
+            throw new Exception("Age must be at least 18 to vote.");
+        }
+    }
+}
+
+---
+File: ./Concepts/05_Exception_Handling/UserDefinedException.java
+---
+// Custom exception class for demonstrating user-defined exceptions.
+public class UserDefinedException extends Exception {
+    public UserDefinedException(String message) {
+        super(message); // Call the constructor of the superclass (Exception) with the error message.
+    }
+}
+
+---
+File: ./Concepts/05_Exception_Handling/BankBalanceException.java
+---
+// Custom exception class for handling low bank balance scenarios.
+public class BankBalanceException extends Exception {
+    public BankBalanceException(String message) {
+        super(message); // Call the constructor of the superclass (Exception) with the error message.
+    }
+}
+
+---
+File: ./Concepts/05_Exception_Handling/TryCatchDemo.java
+---
+// Demonstrates basic exception handling using try, catch, and finally blocks.
+public class TryCatchDemo {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = { 1, 2, 3 };
+            System.out.println(numbers[5]); // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        } finally {
+            System.out.println("This block is always executed.");
+        }
+    }
+}
+
+---
+File: ./Concepts/05_Exception_Handling/StackException.java
+---
+// Custom exception class for handling stack overflow and underflow scenarios.
+public class StackException extends Exception {
+    public StackException(String message) {
+        super(message); // Call the constructor of the superclass (Exception) with the error message.
+    }
+}
+
+---
+File: ./Concepts/06_Multithreading/README.md
+---
+# Exception Handling
+
+In this section, you will learn how to handle runtime errors in Java using exception handling mechanisms.
+
+## Topics Covered:
+1. **Try-Catch Blocks** - Handling exceptions using `try`, `catch`, and `finally`.
+2. **Throwing Exceptions** - How to throw exceptions using `throw` and `throws`.
+3. **User-Defined Exceptions** - Creating your own exception classes.
+
+## Example Programs:
+- `TryCatchDemo.java` - Demonstrate basic exception handling with `try` and `catch`.
+- `UserDefinedException.java` - Create a custom exception class.
+- `SavingsAccount.java` - Throw an exception if withdrawal amount exceeds balance.
+
+## Exercises:
+1. Write a program to handle an invalid age exception (age < 18).
+2. Create a program to simulate a bank transaction and throw an exception if the balance drops below 1000.
+
+Move on to **Multithreading** once you've mastered exception handling.
+
+---
+
+## Files
+
+- **ThreadDemo.java**: Demonstrates creating threads using Thread class and Runnable interface.
+- **Multiples.java**: Prints multiples of 2, 3, and 4 simultaneously.
+- **ThreadPriority.java**: Demonstrates thread priority.
+- **ThreadSync.java**: Demonstrates thread synchronization and inter-thread communication.
+
+
+---
+File: ./Concepts/06_Multithreading/ThreadSync.java
+---
+
+
+---
+File: ./Concepts/06_Multithreading/ThreadPriority.java
+---
+
+
+---
+File: ./Concepts/06_Multithreading/ThreadDemo.java
+---
+
+
+---
+File: ./Concepts/06_Multithreading/Multiples.java
+---
+
+
+---
+File: ./Concepts/07_Networking/HostNameToIP.java
+---
+
+
+---
+File: ./Concepts/07_Networking/EchoServer.java
+---
+
+
+---
+File: ./Concepts/07_Networking/README.md
+---
+# Networking in Java
+
+Welcome to the **Networking** section! This section focuses on how Java allows computers to communicate over a network using various protocols.
+
+## Topics Covered:
+1. **IP Address Lookup** - How to retrieve the IP address of a host.
+2. **Sockets** - Using TCP/IP sockets to build a client-server application.
+3. **Echo Server/Client** - Build simple echo server-client programs.
+
+## Example Programs:
+
+1. **`HostNameToIP.java`** - A program that accepts a hostname and displays its IP address.
+   - **Concepts**: Working with `InetAddress` to resolve IP addresses.
+
+2. **`EchoServer.java` & `EchoClient.java`** - A pair of programs where the client sends a message to the server, and the server echoes it back.
+   - **Concepts**: Working with `ServerSocket`, `Socket`, and streams.
+
+3. **`TCPClientServer.java`** - A simple client-server program using TCP/IP, where the client sends messages to the server.
+   - **Concepts**: Using TCP/IP sockets to exchange messages between client and server.
+
+## Exercises:
+1. Write a program to display the IP address of any website by accepting the hostname from the user.
+2. Write a simple echo server-client program where the server echoes whatever the client sends.
+3. Create a TCP client-server application that sends a message from the client to the server and logs the message on both ends.
+
+---
+
+### Moving Forward:
+After understanding the basics of networking, you can dive deeper into more advanced network programming topics like multithreaded servers, file transfer protocols, and web services.
+
+---
+
+## Files
+
+- **HostNameToIP.java**: Displays IP address of a given host name.
+- **EchoServer.java**: Echo server using sockets.
+- **EchoClient.java**: Echo client using sockets.
+- **TCPClientServer.java**: TCP/IP client-server program.
+
+
+---
+File: ./Concepts/07_Networking/TCPClientServer.java
+---
+
+
+---
+File: ./Concepts/07_Networking/EchoClient.java
+---
+
+
+---
+File: ./Concepts/03_Classes_Objects/UseStatic.java
+---
+// Demonstrates the use of static members.
+public class UseStatic {
+    static int staticVar = 10; // Static variable
+    int instanceVar = 20; // Instance variable
+
+    // Static method to print static variable
+    static void staticMethod() {
+        System.out.println("Static variable: " + staticVar);
+    }
+
+    // Instance method to print instance variable
+    void instanceMethod() {
+        System.out.println("Instance variable: " + instanceVar);
+    }
+
+    // Static block to initialize static variables
+    static {
+        System.out.println("Static block executed.");
+        staticVar = 30;
+    }
+
+    public static void main(String[] args) {
+        // Call static method
+        UseStatic.staticMethod();
+
+        // Create an instance of UseStatic
+        UseStatic obj = new UseStatic();
+        // Call instance method
+        obj.instanceMethod();
+    }
+}
+
+---
+File: ./Concepts/03_Classes_Objects/README.md
+---
+# Classes & Objects
+
+Now that you have a solid foundation in Java, let's dive into Object-Oriented Programming (OOP). In this section, you'll learn how to create classes and objects, and how to use methods and static variables.
+
+## Topics Covered:
+1. **Classes & Objects** - Defining and using classes and objects.
+2. **Constructors** - Default and parameterized constructors.
+3. **Methods** - Creating methods and method overloading.
+4. **Static Keyword** - Using static variables and static blocks.
+
+## Example Programs:
+- `Box.java` - Create a class to calculate the volume of a box.
+- `UseStatic.java` - Demonstrate the use of static methods, variables, and blocks.
+- `TestReference.java` - Illustrate passing objects as parameters.
+
+## Exercises:
+1. Create a class `Box` and calculate its volume.
+2. Create a class `Triangle` and calculate its area using a parameterized constructor.
+3. Write a program to demonstrate static variables and methods.
+
+Once you grasp OOP basics, move on to **Inheritance & Polymorphism**.
+
+---
+
+## Files
+
+- **Box.java**: Demonstrates the creation and use of a simple class.
+- **TestReference.java**: Tests object references and their behavior.
+- **UseStatic.java**: Demonstrates the use of static members.
+
+---
+File: ./Concepts/03_Classes_Objects/TestReference.java
+---
+// Tests object references and their behavior.
+public class TestReference {
+    int value;
+
+    // Constructor to initialize the value
+    TestReference(int value) {
+        this.value = value;
+    }
+
+    // Method to modify the value
+    void modifyValue(TestReference obj) {
+        obj.value += 10;
+    }
+
+    public static void main(String[] args) {
+        // Create an instance of TestReference
+        TestReference ref = new TestReference(20);
+        System.out.println("Before modification: " + ref.value);
+
+        // Modify the value using the method
+        ref.modifyValue(ref);
+        System.out.println("After modification: " + ref.value);
+    }
+}
+
+---
+File: ./Concepts/03_Classes_Objects/Box.java
+---
+// Demonstrates the creation and use of a simple class.
+public class Box {
+    double width;
+    double height;
+    double depth;
+
+    // Constructor to initialize the dimensions of the box
+    Box(double w, double h, double d) {
+        width = w;
+        height = h;
+        depth = d;
+    }
+
+    // Method to calculate the volume of the box
+    double volume() {
+        return width * height * depth;
+    }
+
+    public static void main(String[] args) {
+        // Create an instance of Box
+        Box myBox = new Box(10, 20, 15);
+        // Calculate and print the volume of the box
+        System.out.println("Volume of the box is: " + myBox.volume());
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/MatrixOperations.java
+---
+// Perform operations on matrices.
+public class MatrixOperations {
+    public static void main(String[] args) {
+        // Declare and initialize two matrices
+        int[][] matrix1 = {
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
+        };
+
+        int[][] matrix2 = {
+                { 9, 8, 7 },
+                { 6, 5, 4 },
+                { 3, 2, 1 }
+        };
+
+        // Add the matrices
+        int[][] sum = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                sum[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+
+        // Print the sum of the matrices
+        System.out.println("Sum of the matrices:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(sum[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // Multiply the matrices
+        int[][] product = new int[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                product[i][j] = 0;
+                for (int k = 0; k < 3; k++) {
+                    product[i][j] += matrix1[i][k] * matrix2[k][j];
+                }
+            }
+        }
+
+        // Print the product of the matrices
+        System.out.println("Product of the matrices:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(product[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/ArraysDemo.java
+---
+// Demonstrates basic array operations.
+public class ArraysDemo {
+    public static void main(String[] args) {
+        // Declare and initialize an array
+        int[] numbers = { 1, 2, 3, 4, 5 };
+
+        // Print the elements of the array
+        System.out.println("Array elements:");
+        for (int number : numbers) {
+            System.out.println(number);
+        }
+
+        // Calculate the sum of the array elements
+        int sum = 0;
+        for (int number : numbers) {
+            sum += number;
+        }
+        System.out.println("Sum of array elements: " + sum);
+
+        // Find the largest element in the array
+        int max = numbers[0];
+        for (int number : numbers) {
+            if (number > max) {
+                max = number;
+            }
+        }
+        System.out.println("Largest element in the array: " + max);
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/README.md
+---
+This section focuses on Arrays and Strings, two key components of Java. You'll learn how to store, manipulate, and search through data in arrays and perform various string operations.
+
+## Topics Covered:
+1. **Arrays** - Declaration, initialization, sorting, and searching.
+2. **Strings** - String manipulation, functions like `length()`, `charAt()`, and `equals()`.
+
+## Example Programs:
+- `ArraysDemo.java` - Demonstrates how to initialize and print elements of an array.
+- `Sorting.java` - Sort an array in ascending and descending order.
+- `BinarySearch.java` - Perform binary search on an array of integers.
+- `LinearSearch.java` - Perform linear search on an array of integers.
+- `MatrixOperations.java` - Perform addition and multiplication on matrices.
+- `SmallestElement.java` - Find the smallest element in an array.
+- `StringDemo.java` - Show usage of basic String methods.
+
+## Exercises:
+1. Write a program to initialize and print elements of an array.
+2. Write a program to perform a linear search on an array.
+3. Write a program to demonstrate any 10 String class functions.
+4. Write a program to sort an array of integers in ascending and descending order.
+5. Write a program to perform addition and multiplication on matrices.
+6. Write a program to find the smallest element in an array.
+
+Once you've understood arrays and strings, proceed to **Classes & Objects**.
+
+---
+
+## Files
+
+- **ArraysDemo.java**: Demonstrates basic array operations.
+- **BinarySearch.java**: Implements binary search algorithm.
+- **LinearSearch.java**: Implements linear search algorithm.
+- **MatrixOperations.java**: Perform operations on matrices.
+- **SmallestElement.java**: Find the smallest element in an array.
+- **Sorting.java**: Demonstrates sorting algorithms.
+
+---
+File: ./Concepts/02_Arrays_Strings/LinearSearch.java
+---
+
+// Implements linear search algorithm.
+import java.util.Scanner;
+
+public class LinearSearch {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Declare and initialize an array
+        int[] numbers = { 10, 20, 30, 40, 50 };
+
+        // Read the target value from the user
+        System.out.print("Enter the number to search: ");
+        int target = input.nextInt();
+
+        // Perform linear search
+        boolean found = false;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == target) {
+                found = true;
+                System.out.println("Number found at index: " + i);
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Number not found in the array.");
+        }
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/SmallestElement.java
+---
+// Find the smallest element in an array.
+public class SmallestElement {
+    public static void main(String[] args) {
+        // Declare and initialize an array
+        int[] numbers = { 5, 3, 8, 1, 2 };
+
+        // Find the smallest element
+        int smallest = numbers[0];
+        for (int number : numbers) {
+            if (number < smallest) {
+                smallest = number;
+            }
+        }
+
+        System.out.println("Smallest element in the array: " + smallest);
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/BinarySearch.java
+---
+
+// Implements binary search algorithm.
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BinarySearch {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Declare and initialize a sorted array
+        int[] numbers = { 10, 20, 30, 40, 50 };
+
+        // Read the target value from the user
+        System.out.print("Enter the number to search: ");
+        int target = input.nextInt();
+
+        // Perform binary search
+        int result = Arrays.binarySearch(numbers, target);
+
+        if (result >= 0) {
+            System.out.println("Number found at index: " + result);
+        } else {
+            System.out.println("Number not found in the array.");
+        }
+    }
+}
+
+---
+File: ./Concepts/02_Arrays_Strings/Sorting.java
+---
+
+// Demonstrates sorting algorithms.
+import java.util.Arrays;
+
+public class Sorting {
+    public static void main(String[] args) {
+        // Declare and initialize an array
+        int[] numbers = { 5, 3, 8, 1, 2 };
+
+        // Sort the array in ascending order
+        Arrays.sort(numbers);
+        System.out.println("Array sorted in ascending order: " + Arrays.toString(numbers));
+
+        // Sort the array in descending order
+        Integer[] numbersDesc = { 5, 3, 8, 1, 2 };
+        Arrays.sort(numbersDesc, (a, b) -> b - a);
+        System.out.println("Array sorted in descending order: " + Arrays.toString(numbersDesc));
+    }
+}
+
+---
+File: ./Concepts/04_Inheritance/AbstractFigure.java
+---
+// Demonstrates the use of abstract classes and methods.
+abstract class Figure {
+    double dimension1;
+    double dimension2;
+
+    // Constructor to initialize dimensions
+    Figure(double d1, double d2) {
+        dimension1 = d1;
+        dimension2 = d2;
+    }
+
+    // Abstract method to calculate area
+    abstract double area();
+}
+
+class Rectangle extends Figure {
+    // Constructor to initialize dimensions
+    Rectangle(double d1, double d2) {
+        super(d1, d2);
+    }
+
+    // Implement the abstract method to calculate area
+    double area() {
+        return dimension1 * dimension2;
+    }
+}
+
+class Triangle extends Figure {
+    // Constructor to initialize dimensions
+    Triangle(double d1, double d2) {
+        super(d1, d2);
+    }
+
+    // Implement the abstract method to calculate area
+    double area() {
+        return 0.5 * dimension1 * dimension2;
+    }
+}
+
+public class AbstractFigure {
+    public static void main(String[] args) {
+        // Create instances of Rectangle and Triangle
+        Figure rectangle = new Rectangle(10, 20);
+        Figure triangle = new Triangle(10, 20);
+
+        // Print the area of the rectangle and triangle
+        System.out.println("Area of Rectangle: " + rectangle.area());
+        System.out.println("Area of Triangle: " + triangle.area());
+    }
+}
+
+---
+File: ./Concepts/04_Inheritance/DynamicDispatch.java
+---
+// Demonstrates dynamic method dispatch (runtime polymorphism).
+class A {
+    // Method to be overridden
+    void display() {
+        System.out.println("Inside A's display method");
+    }
+}
+
+class B extends A {
+    // Override the display method
+    void display() {
+        System.out.println("Inside B's display method");
+    }
+}
+
+class C extends A {
+    // Override the display method
+    void display() {
+        System.out.println("Inside C's display method");
+    }
+}
+
+public class DynamicDispatch {
+    public static void main(String[] args) {
+        A a; // Declare a reference of type A
+
+        // Create instances of B and C
+        B b = new B();
+        C c = new C();
+
+        // Point the reference to an instance of B
+        a = b;
+        a.display(); // Calls B's display method
+
+        // Point the reference to an instance of C
+        a = c;
+        a.display(); // Calls C's display method
+    }
+}
+
+---
+File: ./Concepts/04_Inheritance/SuperDemo.java
+---
+// Demonstrates the use of the super keyword to call the parent class constructor.
+class Parent {
+    int value;
+
+    // Constructor to initialize value
+    Parent(int value) {
+        this.value = value;
+        System.out.println("Parent class constructor called. Value: " + value);
+    }
+}
+
+class Child extends Parent {
+    // Constructor to initialize value and call the parent class constructor
+    Child(int value) {
+        super(value); // Call the parent class constructor
+        System.out.println("Child class constructor called. Value: " + value);
+    }
+}
+
+public class SuperDemo {
+    public static void main(String[] args) {
+        // Create an instance of Child
+        Child child = new Child(10);
+    }
+}
+
+---
+File: ./Concepts/04_Inheritance/README.md
+---
+# Inheritance & Polymorphism
+
+Inheritance allows you to define a new class based on an existing class. In this section, you'll explore inheritance, polymorphism, and abstract classes.
+
+## Topics Covered:
+1. **Inheritance** - Reusing code from existing classes.
+2. **Polymorphism** - Using a single interface to represent different types.
+3. **Super Keyword** - Accessing parent class members.
+4. **Abstract Classes** - Working with abstract classes and methods.
+
+## Example Programs:
+- `BoxWeight.java` - Inherit class `Box` and add the `weight` variable.
+- `SuperDemo.java` - Use the `super` keyword to call the parent class constructor.
+- `AbstractFigure.java` - Demonstrate the use of abstract classes and methods.
+- `DynamicDispatch.java` - Demonstrate dynamic method dispatch (runtime polymorphism).
+
+## Exercises:
+1. Create a class `BoxWeight` that inherits from `Box` and adds a `weight` attribute.
+2. Write a program to implement polymorphism using dynamic method dispatch.
+3. Create an abstract class `Figure` and implement `Rectangle` and `Triangle` subclasses.
+
+Continue to **Packages & Interfaces** after completing these.
+
+---
+
+## Files
+
+- **AbstractFigure.java**: Demonstrates the use of abstract classes and methods.
+- **BoxWeight.java**: Inherit class `Box` and add the `weight` variable.
+- **DynamicDispatch.java**: Demonstrates dynamic method dispatch (runtime polymorphism).
+- **SuperDemo.java**: Demonstrates the use of the `super` keyword to call the parent class constructor.
+
+---
+File: ./Concepts/04_Inheritance/BoxWeightDemo.java
+---
+// Inherit class Box and add the weight variable.
+class Box {
+    double width;
+    double height;
+    double depth;
+
+    // Constructor to initialize dimensions
+    Box(double w, double h, double d) {
+        width = w;
+        height = h;
+        depth = d;
+    }
+
+    // Method to calculate volume
+    double volume() {
+        return width * height * depth;
+    }
+}
+
+class BoxWeight extends Box {
+    double weight;
+
+    // Constructor to initialize dimensions and weight
+    BoxWeight(double w, double h, double d, double m) {
+        super(w, h, d); // Call the parent class constructor
+        weight = m;
+    }
+}
+
+public class BoxWeightDemo {
+    public static void main(String[] args) {
+        // Create an instance of BoxWeight
+        BoxWeight myBox = new BoxWeight(10, 20, 15, 34.3);
+
+        // Print the volume and weight of the box
+        System.out.println("Volume of the box is: " + myBox.volume());
+        System.out.println("Weight of the box is: " + myBox.weight);
+    }
+}
+
+---
+File: ./Concepts/09_AWT_Swing/SwingRGB.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/SwingControls.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/BorderLayoutApplet.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/FontApplet.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/CalculatorApplet.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/SwingFont.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/SwingLogin.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/README.md
+---
+# AWT & Swing in Java
+
+In this section, you'll learn how to create graphical user interfaces (GUIs) using **AWT (Abstract Window Toolkit)** and **Swing**. AWT provides basic building blocks for creating windows, while Swing extends AWT to provide more advanced features and components.
+
+## Topics Covered:
+1. **AWT Basics** - Creating simple applets and handling user input.
+2. **Swing Basics** - Creating windows, adding controls, and handling events.
+3. **Layouts** - Managing component positioning with different layout managers like `BorderLayout`.
+4. **RGB Colors** - Working with colors using scroll bars.
+
+## Example Programs:
+
+### AWT:
+1. **`LoginApplet.java`** - An applet that creates a simple login window with username and password fields.
+   - **Concepts**: Using `TextField` and `Button` in an applet.
+
+2. **`FontApplet.java`** - A program that lets the user change the font of text using control boxes for font name, size, and style.
+   - **Concepts**: Working with `Choice` boxes and font manipulation.
+
+3. **`CalculatorApplet.java`** - A 3-function calculator (addition, subtraction, multiplication) implemented as an applet.
+   - **Concepts**: Handling button click events in applets.
+
+4. **`RGBApplet.java`** - A program that uses scrollbars to adjust RGB color combinations and change the background color.
+   - **Concepts**: Working with `Scrollbar` and `Color` in applets.
+
+### Swing:
+1. **`SwingLogin.java`** - A Swing version of the login window with username and password fields.
+   - **Concepts**: Using `JTextField` and `JButton` in Swing.
+
+2. **`SwingFont.java`** - A Swing application that lets the user change the font of the text using control boxes.
+   - **Concepts**: Handling events and changing styles in Swing.
+
+3. **`SwingCalculator.java`** - A 3-function calculator created using Swing components.
+   - **Concepts**: Handling basic arithmetic operations with `JButton` and `JTextField`.
+
+4. **`SwingRGB.java`** - A program that uses scrollbars in Swing to display color combinations of RGB values.
+   - **Concepts**: Handling `JScrollBar` events in Swing.
+
+5. **`SwingBorderLayout.java`** - A demonstration of using the `BorderLayout` layout manager in Swing.
+   - **Concepts**: Arranging components with `BorderLayout`.
+
+## Exercises:
+1. Create a simple login applet that checks if the username and password match predefined values.
+2. Write an applet that uses scrollbars to change the background color of the window.
+3. Create a Swing application with three control boxes to select a font, size, and style, and apply the selected settings to a text label.
+4. Write a Swing application that uses at least five different controls, such as buttons, text fields, checkboxes, etc.
+
+---
+
+### Moving Forward:
+After learning AWT and Swing basics, you can dive into more advanced topics like custom painting, event-driven programming, and integrating GUI with backend data using JDBC.
+
+
+---
+
+## Files
+
+- **CalculatorApplet.java**: Implements a 3-function calculator using applet.
+- **LoginApplet.java**: Applet login window with text fields and buttons.
+- **FontApplet.java**: Applet with control boxes for font name, size, and style.
+- **RGBApplet.java**: Applet to display RGB combination using scrollbars.
+- **SwingControls.java**: Swing application using at least 5 controls.
+- **BorderLayoutApplet.java**: Implements border layout using applet.
+- **SwingCalculator.java**: Implements a 3-function calculator using Swing.
+- **SwingLogin.java**: Swing login window with text fields and buttons.
+- **SwingFont.java**: Swing application with control boxes for font name, size, and style.
+- **SwingRGB.java**: Swing application to display RGB combination using scrollbars.
+- **SwingBorderLayout.java**: Implements border layout using Swing.
+
+
+---
+File: ./Concepts/09_AWT_Swing/SwingCalculator.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/LoginApplet.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/RGBApplet.java
+---
+
+
+---
+File: ./Concepts/09_AWT_Swing/SwingBorderLayout.java
+---
+
+
+---
+File: ./Concepts/08_JDBC/InsertRecord.java
+---
+
+
+---
+File: ./Concepts/08_JDBC/CreateTable.java
+---
+
+
+---
+File: ./Concepts/08_JDBC/README.md
+---
+# JDBC (Java Database Connectivity)
+
+This section introduces **JDBC**, which allows Java applications to interact with relational databases. You'll learn how to establish a database connection, perform CRUD operations (Create, Read, Update, Delete), and manage data efficiently.
+
+## Topics Covered:
+1. **Connecting to a Database** - How to set up a connection using JDBC.
+2. **SQL Operations** - How to run SQL queries from Java code.
+3. **Database Transactions** - Performing insert, update, and delete operations from Java.
+
+## Example Programs:
+
+1. **`JDBCConnection.java`** - A program that demonstrates how to connect to a database using JDBC.
+   - **Concepts**: Establishing a connection using `DriverManager`.
+
+2. **`CreateTable.java`** - A program that creates a table in the connected database.
+   - **Concepts**: Executing `CREATE TABLE` SQL statements from Java.
+
+3. **`InsertRecord.java`** - Demonstrates how to insert a new record into a table.
+   - **Concepts**: Using `PreparedStatement` to insert data into a database.
+
+4. **`UpdateRecord.java`** - Shows how to update existing records in the database.
+   - **Concepts**: Executing `UPDATE` SQL statements.
+
+## Exercises:
+1. Write a program to establish a connection to any database of your choice using JDBC.
+2. Write a program that creates a table with columns `id`, `name`, and `email`, then insert at least three records.
+3. Modify the program to update one of the records and display the updated record.
+
+---
+
+### Moving Forward:
+Once you're comfortable with JDBC, explore more advanced topics like transaction management, batch processing, and database connection pools to improve the performance of your database-driven Java applications.
+
+---
+
+## Files
+
+- **JDBCConnection.java**: Demonstrates JDBC connection and SQL statements.
+- **InsertRecord.java**: Inserts a record into the database.
+- **CreateTable.java**: Creates a table in the database.
+- **UpdateRecord.java**: Updates records in the database.
+
+
+---
+File: ./Concepts/08_JDBC/JDBCConnection.java
+---
+
+
+---
+File: ./Concepts/08_JDBC/UpdateRecord.java
+---
+
+
+---
+File: ./Concepts/01_Basics/README.md
+---
+# Java Basics
+
+Welcome to the **Java Basics** section. This is where you'll start your journey into the world of Java. Here, you'll learn how to write and execute simple programs.
+
+## Topics Covered:
+1. **Basic Syntax** - How to write a simple Java program.
+2. **Primitive Data Types** - int, float, char, etc.
+3. **Type Casting & Conversions** - Converting between data types.
+4. **Basic Arithmetic Operations** - Addition, subtraction, multiplication, and division.
+5. **Control Statements** - if-else, loops (for, while, do-while).
+
+## Example Programs:
+- `HelloWorld.java` - A simple "Hello, World!" program to get you started.
+- `CircleArea.java` - Calculate the area of a circle.
+- `SimpleOperations.java` - Add, subtract, multiply, and divide two numbers.
+- `PrimeCheck.java` - Check if a number is prime.
+- `CommandLineArgs.java` - Demonstrates the use of command-line arguments.
+- `StudentGrade.java` - Calculate and display student grades.
+- `TypeCasting.java` - Demonstrates type casting in Java.
+
+## Exercises:
+1. Write a program to print "Hello World".
+2. Write a program to compute the area of a circle.
+3. Write a program to perform addition, subtraction, multiplication, and division of two numbers.
+4. Write a program to check if a number is prime.
+5. Write a program to accept numbers as command-line arguments and print them.
+6. Write a program to calculate and display the grade of a student based on their score.
+7. Write a program to demonstrate type casting in Java.
+
+Move on to the next section once you're comfortable with these basics.
+
+---
+
+## Files
+
+- **CircleArea.java**: Calculate the area of a circle.
+- **CommandLineArgs.java**: Demonstrates the use of command-line arguments.
+- **HelloWorld.java**: A simple Hello World program.
+- **PrimeCheck.java**: Check if a number is prime.
+- **SimpleOperations.java**: Perform basic arithmetic operations.
+- **StudentGrade.java**: Calculate and display student grades.
+- **TypeCasting.java**: Demonstrates type casting in Java.
+
+---
+File: ./Concepts/01_Basics/HelloWorld.java
+---
+// A simple Hello World program.
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); // Print Hello, World! to the console
+    }
+}
+
+---
+File: ./Concepts/01_Basics/CircleArea.java
+---
+// Calculate the area of a circle.
+import java.util.Scanner;
+
+public class CircleArea {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); // Create a Scanner object for input
+        System.out.print("Enter the radius of the circle: ");
+        double radius = input.nextDouble(); // Read the radius from the user
+        double area = Math.PI * radius * radius; // Calculate the area using the formula πr²
+        System.out.println("The area of the circle is " + area); // Print the area
+    }
+}
+
+---
+File: ./Concepts/01_Basics/StudentGrade.java
+---
+
+// Calculate and display student grades.
+import java.util.Scanner;
+
+public class StudentGrade {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); // Create a Scanner object for input
+        System.out.print("Enter the student's score: ");
+        int score = input.nextInt(); // Read the student's score
+
+        char grade;
+        if (score >= 90) {
+            grade = 'A';
+        } else if (score >= 80) {
+            grade = 'B';
+        } else if (score >= 70) {
+            grade = 'C';
+        } else if (score >= 60) {
+            grade = 'D';
+        } else {
+            grade = 'F';
+        }
+
+        System.out.println("The student's grade is: " + grade); // Print the student's grade
+    }
+}
+
+---
+File: ./Concepts/01_Basics/PrimeCheck.java
+---
+
+// Check if a number is prime.
+import java.util.Scanner;
+
+public class PrimeCheck {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); // Create a Scanner object for input
+        System.out.print("Enter a number: ");
+        int number = input.nextInt(); // Read the number from the user
+
+        boolean isPrime = true;
+        if (number <= 1) {
+            isPrime = false; // Numbers less than or equal to 1 are not prime
+        } else {
+            for (int i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i == 0) {
+                    isPrime = false; // If divisible by any number other than 1 and itself, it's not prime
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+    }
+}
+
+---
+File: ./Concepts/01_Basics/CommandLineArgs.java
+---
+// Demonstrates the use of command-line arguments.
+public class CommandLineArgs {
+    public static void main(String[] args) {
+        if (args.length > 0) {
+            System.out.println("Command-line arguments:");
+            for (String arg : args) {
+                System.out.println(arg); // Print each command-line argument
+            }
+        } else {
+            System.out.println("No command-line arguments found.");
+        }
+    }
+}
+
+---
+File: ./Concepts/01_Basics/TypeCasting.java
+---
+// Demonstrates type casting in Java.
+public class TypeCasting {
+    public static void main(String[] args) {
+        int intVal = 100;
+        double doubleVal = intVal; // Implicit casting (int to double)
+
+        System.out.println("Integer value: " + intVal);
+        System.out.println("Double value (after implicit casting): " + doubleVal);
+
+        double anotherDoubleVal = 9.78;
+        int anotherIntVal = (int) anotherDoubleVal; // Explicit casting (double to int)
+
+        System.out.println("Double value: " + anotherDoubleVal);
+        System.out.println("Integer value (after explicit casting): " + anotherIntVal);
+    }
+}
+
+---
+File: ./Concepts/01_Basics/SimpleOperations.java
+---
+
+// Perform basic arithmetic operations.
+import java.util.Scanner;
+
+public class SimpleOperations {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in); // Create a Scanner object for input
+        System.out.print("Enter first number: ");
+        double num1 = input.nextDouble(); // Read the first number
+        System.out.print("Enter second number: ");
+        double num2 = input.nextDouble(); // Read the second number
+
+        double sum = num1 + num2; // Calculate the sum
+        double difference = num1 - num2; // Calculate the difference
+        double product = num1 * num2; // Calculate the product
+        double quotient = num1 / num2; // Calculate the quotient
+
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+        System.out.println("Product: " + product);
+        System.out.println("Quotient: " + quotient);
+    }
+}
+
