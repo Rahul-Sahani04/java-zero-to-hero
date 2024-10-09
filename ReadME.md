@@ -67,7 +67,7 @@ or [Click Here](https://notebooklm.google.com/notebook/9acdab30-9f70-4b76-b1c2-d
 
 ---
 
-### Repository Status
+### Repository Status (WIP 🚧)
 This repository is still in creation and is actively being updated and maintained. New content and improvements are added regularly. Stay tuned for more updates!
 
 ---
