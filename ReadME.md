@@ -11,6 +11,12 @@ By following this structured learning path, you'll gain a deep understanding of 
 4. **Try the Exercises**: Attempt the exercises provided in each folder before checking the solutions.
 5. **Build your Own Projects**: Once you feel confident, try creating your own projects.
 
+---
+
+### Need Help or Have Queries?
+If you need any help or have queries, you can use my custom Notebook LM with built-in Java sources to help yourself. Please note that this is an AI tool and may sometimes provide incorrect information.
+
+[Access the Notebook LM](https://notebooklm.google.com/notebook/9acdab30-9f70-4b76-b1c2-dfbdac280416)
 
 ---
 
