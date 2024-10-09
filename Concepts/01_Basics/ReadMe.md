@@ -9,6 +9,9 @@ Welcome to the **Java Basics** section. This is where you'll start your journey 
 4. **Basic Arithmetic Operations** - Addition, subtraction, multiplication, and division.
 5. **Control Statements** - if-else, loops (for, while, do-while).
 
+## How It Works:
+![Java Basics](https://media.geeksforgeeks.org/wp-content/uploads/20220203163100/Java-Basics.png)
+
 ## Example Programs:
 - `HelloWorld.java` - A simple "Hello, World!" program to get you started.
 - `CircleArea.java` - Calculate the area of a circle.
