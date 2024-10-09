@@ -10,7 +10,7 @@ Welcome to the **Java Basics** section. This is where you'll start your journey 
 5. **Control Statements** - if-else, loops (for, while, do-while).
 
 ## How It Works:
-![Java Basics](Assets/Java-CheatSheet.png)
+![Java Basics](https://github.com/Rahul-Sahani04/java-zero-to-hero/blob/main/Assets/Java-CheatSheet.png?raw=true)
 
 ## Example Programs:
 - `HelloWorld.java` - A simple "Hello, World!" program to get you started.
