@@ -2,12 +2,14 @@
 
 // Custom thread class extending Thread
 class MyThread extends Thread {
+
     // Override the run method to define the thread's task
     @Override
     public void run() {
+        System.out.println("\n\nThread Name: " + Thread.currentThread().getName());
         // Loop to print a message 5 times
         for (int i = 0; i < 5; i++) {
-            System.out.println("MyThread is running");
+            System.out.println("MyThread is running ");
         }
     }
 }
@@ -19,7 +21,7 @@ class MyRunnable implements Runnable {
     public void run() {
         // Loop to print a message 5 times
         for (int i = 0; i < 5; i++) {
-            System.out.println("MyRunnable is running");
+            System.out.println("MyRunnable is running ");
         }
     }
 }
