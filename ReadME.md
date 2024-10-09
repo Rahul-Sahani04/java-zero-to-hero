@@ -44,6 +44,7 @@ By following this structured learning path, you'll gain a deep understanding of 
 ### Cheatsheets
 - [Princeton University Java Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)
 - [Code with Harry Java Cheatsheet](https://www.codewithharry.com/blogpost/java-cheatsheet/)
+- [GeeksforGeeks Java Cheatsheet](https://www.geeksforgeeks.org/java-cheat-sheet/)
 
 ---
 
