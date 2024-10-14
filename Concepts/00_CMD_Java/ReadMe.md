@@ -1,4 +1,8 @@
-Got it! Here are some basic Java commands you'll use in the command line:
+# Java Command Line Cheatsheet
+
+This document provides a quick reference for common Java command line operations.
+
+---
 
 ### 1. **Compiling Java Files**
    - **Command:** `javac`
@@ -22,6 +26,7 @@ Got it! Here are some basic Java commands you'll use in the command line:
    - **Example:**
      ```bash
      javac -help
+     java -help
      ```
 
 ### 4. **Setting the Classpath**
@@ -32,7 +37,7 @@ Got it! Here are some basic Java commands you'll use in the command line:
      java -cp . MyProgram
      ```
 
-### 5. **Java Version**
+### 5. **Checking Java Version**
    - **Command:** `java -version`
    - **Usage:** To check the installed version of Java.
    - **Example:**
@@ -56,5 +61,6 @@ Got it! Here are some basic Java commands you'll use in the command line:
      java -jar myapp.jar
      ```
 
-These commands will help you get started with compiling and running Java programs from the command line. Let me know if you need more details!
+---
 
+Start with the [Java Basics](Concepts/01_Basics) to begin your journey!
