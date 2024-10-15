@@ -60,6 +60,39 @@ This document provides a quick reference for common Java command line operations
      ```bash
      java -jar myapp.jar
      ```
+    
+---
+
+**Example:**
+
+```java
+public class PrintArguments {
+    public static void main(String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            System.out.println("Argument " + (i + 1) + ": " + args[i]);
+        }
+    }
+}
+```
+
+**To run:**
+
+1.  Save the code as `PrintArguments.java`.
+2.  Compile: `javac PrintArguments.java`
+3.  Run: `java PrintArguments arg1 arg2 arg3`  (Replace with your arguments)
+
+**Output:**
+
+```
+Argument 1: arg1
+Argument 2: arg2
+Argument 3: arg3
+```
+
+**Further Reading:**
+
+*   [Oracle Java Documentation on Command Line Arguments](https://docs.oracle.com/javase/tutorial/essential/environment/cmdLineArgs.html)
+
 
 ---
 
