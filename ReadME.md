@@ -1,3 +1,5 @@
+<img src="https://gamakaai.com/wp-content/uploads/2019/06/java-banner-1-1024x332.png" alt="java banner" width="100%" />
+
 Welcome to the **Java Zero to Hero Guide**, a comprehensive resource designed for beginners to learn Java from scratch. Each folder in this repository contains examples and exercises that build upon the previous concepts.
 
 By following this structured learning path, you'll gain a deep understanding of Java, from basics to advanced topics like multithreading, networking, and GUI development.
